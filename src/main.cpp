@@ -182,11 +182,11 @@ constexpr float EMA_ALPHA = 0.15f;          // EMA smoothing factor (0.1=smooth,
 constexpr float MEDIAN_WINDOW = 5;           // Median filter window size (odd number)
 
 // Threshold with hysteresis (in m/s²)
-constexpr float BRAKE_THRESHOLD_ON  = -1.2f; // Trigger braking when accel drops below this
-constexpr float BRAKE_THRESHOLD_OFF = -0.3f; // Release braking when accel rises above this
+constexpr float BRAKE_THRESHOLD_ON  = -2.0f; // Trigger braking when accel drops below this
+constexpr float BRAKE_THRESHOLD_OFF = -0.5f; // Release braking when accel rises above this
 
 // Timing requirements
-constexpr unsigned long BRAKE_MIN_DURATION_MS = 150;  // Minimum duration to confirm brake
+constexpr unsigned long BRAKE_MIN_DURATION_MS = 200;  // Minimum duration to confirm brake
 constexpr unsigned long BRAKE_DEBOUNCE_MS     = 50;   // Debounce time after release
 
 // ============== Globals ==============
