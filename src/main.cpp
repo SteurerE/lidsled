@@ -385,7 +385,7 @@ bool initMPU6050() {
     mpu.setRate(1);
     
     // Configure low-pass filter (reduces noise)
-    mpu.setDLPFMode(MPU6050_DLPF_BW_20);
+    mpu.setDLPFMode(MPU6050_DLPF_BW_98);
     
 #ifdef USE_MADGWICK_FILTER
     // Initialize Madgwick filter
@@ -850,10 +850,11 @@ void showIdlePattern() {
 // Persistent state for rainbow animation
 static uint16_t rainbowHueOffset = 0;
 
-// Configuration for rainbow effect
-constexpr float RAINBOW_MIN_SPEED = 0.5f;    // Minimum hue change per update (when flat)
-constexpr float RAINBOW_MAX_SPEED = 8.0f;    // Maximum hue change per update (steep pitch)
-constexpr float RAINBOW_PITCH_SCALE = 0.15f; // How much pitch affects speed (per degree)
+// Configuration for rainbow effect (tuned for ski slopes: 5-40° typical)
+constexpr float RAINBOW_MIN_SPEED = 1.0f;    // Minimum hue change per update (when flat)
+constexpr float RAINBOW_MAX_SPEED = 10.0f;   // Maximum hue change per update (steep pitch)
+constexpr float RAINBOW_PITCH_SCALE = 0.30f; // How much pitch affects speed (per degree)
+                                              // At 30° pitch: 1.0 + 30*0.3 = 10.0 (max speed)
 constexpr uint8_t RAINBOW_HUE_DELTA = 4;     // Hue difference between adjacent LEDs
 
 // Helper: Update rainbow based on pitch and apply to a section
